@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Header from "./components/Header";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/features/authSlice";
+import Search from "./pages/search";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/search/:search" element={<Search />} />
         </Routes>
       </div>
     </BrowserRouter>
