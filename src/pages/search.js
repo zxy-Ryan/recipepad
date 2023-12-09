@@ -35,7 +35,7 @@ function Search() {
           }}
         />
         <button
-          onClick={() => navigate(`/project/search/${searchTerm}`)}
+          onClick={() => navigate(`/search/${searchTerm}`)}
           className="btn btn-primary ms-3"
         >
           Search
