@@ -1,0 +1,12 @@
+[
+    {
+        "id": "recipe1",
+        "title": "Spaghetti Carbonara",
+        "description": "A classic Italian pasta dish with a rich, creamy sauce."
+    },
+    {
+        "id": "recipe2",
+        "title": "Chicken Tikka Masala",
+        "description": "A popular Indian curry with a blend of aromatic spices."
+    }
+]
