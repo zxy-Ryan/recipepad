@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/features/authSlice";
 import Search from "./pages/search";
@@ -34,6 +35,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/search/:search" element={<Search />} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );
