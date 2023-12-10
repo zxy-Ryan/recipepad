@@ -53,7 +53,7 @@ function Search() {
               >
                 <div className="card h-100 ">
                   <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-                  <Link to={`/project/details/${recipe.idMeal}`}>
+                  <Link to={`/Details/${recipe.idMeal}`}>
                     <h3 class="text-center">{recipe.strMeal}</h3>
                   </Link>
                 </div>
