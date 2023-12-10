@@ -8,8 +8,8 @@ import {
   MDBNavbarLink,
   MDBNavbarToggler,
   MDBCollapse,
-  MDBBadge,
-  MDBBtn,
+  // MDBBadge,
+  // MDBBtn,
   MDBNavbarBrand,
 } from "mdb-react-ui-kit";
 import { toast } from "react-toastify";
@@ -25,6 +25,9 @@ const Header = () => {
     // navigate("/");
   };
   const { user } = useSelector((state) => ({ ...state.auth }));
+  console.log(user);
+  console.log(user?.result?._id);
+  console.log(user?.result?.name);
 
   return (
     <MDBNavbar fixed="top" expand="lg" style={{ backgroundColor: "#f0e6ea" }}>
@@ -63,6 +66,7 @@ const Header = () => {
                 </h5>
               </>
             )}
+
             {/*Home*/}
             <MDBNavbarItem>
               <MDBNavbarLink href="/">

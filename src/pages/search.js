@@ -42,6 +42,7 @@ function Search() {
         </button>
         <FaSearchengin className="ms-3" />
       </span>
+
       <h2>Results</h2>
       <div className="container-fluid me-5 search-menu">
         <div className="row ">
