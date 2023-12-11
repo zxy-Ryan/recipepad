@@ -31,15 +31,15 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login/*" element={<Login />} />
+          <Route path="/register/*" element={<Register />} />
           <Route path="/addRecipe" element={<AddEditRecipe />} />
           <Route path="/editRecipe/:id" element={<AddEditRecipe />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/search/:search" element={<Search />} />
-          <Route path="/Details/:recipeId" element={<RecipeDetails />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/profile/:userId" element={<Profile />} />
+          <Route path="/search/*" element={<Search />} />
+          <Route path="/search/:search/*" element={<Search />} />
+          <Route path="/Details/:recipeId/*" element={<RecipeDetails />} />
+          <Route path="/profile/*" element={<Profile />} />
+          <Route path="/profile/:userId/*" element={<Profile />} />
         </Routes>
         <Footer />
       </div>
