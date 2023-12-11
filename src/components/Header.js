@@ -88,12 +88,6 @@ const Header = () => {
                     <p className="header-text">Add Recipe</p>
                   </MDBNavbarLink>
                 </MDBNavbarItem>
-                {/*Dashboard*/}
-                <MDBNavbarItem>
-                  <MDBNavbarLink href="/dashboard">
-                    <p className="header-text">Dashboard</p>
-                  </MDBNavbarLink>
-                </MDBNavbarItem>
                 {/*Profile*/}
                 <MDBNavbarItem>
                   <MDBNavbarLink href="/profile">

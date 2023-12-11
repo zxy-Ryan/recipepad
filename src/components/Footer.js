@@ -1,5 +1,6 @@
 import React from "react";
 import { MDBFooter } from "mdb-react-ui-kit";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -10,7 +11,13 @@ const Footer = () => {
           style={{ backgroundColor: "#f0e6ea", color: "#606080" }}
         >
           © 2023 Copyright:
-          <a className="text-reset fw-bold">&nbsp;Menu</a>
+          <Link
+            to="/"
+            className="text-reset fw-bold"
+            style={{ textDecoration: "none" }}
+          >
+            &nbsp;Menu
+          </Link>
         </div>
       </MDBFooter>
     </div>
