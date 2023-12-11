@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/features/authSlice";
 import Search from "./pages/search";
