@@ -73,12 +73,6 @@ const Header = () => {
 
             {user?.result?._id && (
               <>
-                {/*Search Recipe*/}
-                <MDBNavbarItem>
-                  <MDBNavbarLink href="/search">
-                    <p className="header-text">Search</p>
-                  </MDBNavbarLink>
-                </MDBNavbarItem>
                 {/*Add Recipe*/}
                 <MDBNavbarItem>
                   <MDBNavbarLink href="/addRecipe">
@@ -115,6 +109,12 @@ const Header = () => {
                 </MDBNavbarItem>
               </>
             )}
+            {/*Search Recipe*/}
+            <MDBNavbarItem>
+              <MDBNavbarLink href="/search">
+                <p className="header-text">Search</p>
+              </MDBNavbarLink>
+            </MDBNavbarItem>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>
