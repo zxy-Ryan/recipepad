@@ -31,8 +31,7 @@ const RecipeDetails = ({ match }) => {
 
   const userId = user?.result?._id
   const userName = user?.result?.name
-  console.log(user?.result?._id);
-  console.log(user?.result?.name);
+  
 
 
   const getCommentsForRecipe = async (recipeId) => {
