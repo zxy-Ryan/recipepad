@@ -31,13 +31,13 @@ const Profile = () => {
   const findUserById = async (userId) => {
     const user = await client.findUserById(userId);
     setUser(user);
-    setType('guest');
+    setType("guest");
   };
 
   const fetchAccount = async () => {
     const account = await client.account();
     setAccount(account);
-    setType('account');
+    setType("account");
     console.log(account);
   };
 
@@ -53,12 +53,32 @@ const Profile = () => {
   }, []);
 
   if (!account && !user) {
-    return <h1>Loading...</h1>;
+    return (
+      <div
+        style={{
+          margin: "auto",
+          padding: "15px",
+          maxWidth: "1400px",
+          alignContent: "center",
+          marginTop: "120px",
+        }}
+      >
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   return (
-    <Container>
-      <h1>Profile</h1>
+    <Container
+      style={{
+        margin: "auto",
+        padding: "15px",
+        maxWidth: "1400px",
+        alignContent: "center",
+        marginTop: "120px",
+      }}
+    >
+      <h1 class="text-secondary mb-4">Profile</h1>
       <Tabs defaultActiveKey="userInfo" id="profile-tabs">
         <Tab eventKey="userList" title="User List">
           <UserListTab />

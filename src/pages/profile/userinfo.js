@@ -31,8 +31,16 @@ function UserInfoTab({ user, type }) {
   };
 
   return (
-    <div>
-      <h1>UserInfo</h1>
+    <div
+      style={{
+        margin: "auto",
+        padding: "15px",
+        maxWidth: "450px",
+        alignContent: "center",
+        marginTop: "80px",
+      }}
+    >
+      {/* <h3 class="text-secondary">UserInfo</h3> */}
       <Form onSubmit={save}>
         <Form.Group className="mt-3">
           <Form.Label>Username</Form.Label>
@@ -84,7 +92,12 @@ function UserInfoTab({ user, type }) {
           />
         </Form.Group>
         {isAccount && (
-          <Button variant="primary" type="button" className="mt-2" onClick={save}>
+          <Button
+            variant="primary"
+            type="button"
+            className="mt-4"
+            onClick={save}
+          >
             Save Changes
           </Button>
         )}
