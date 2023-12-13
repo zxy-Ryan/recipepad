@@ -16,3 +16,24 @@ code {
   margin-top: 7px;
   color: #606080;
 }
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.tag-card {
+  margin: 10px 0 0 20px;
+  color: #806a78;
+}
+
+.recipeName {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 0 4px;
+  color: #5b5255;
+}

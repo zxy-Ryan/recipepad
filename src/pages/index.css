@@ -5,6 +5,9 @@
   color: #cc0000;
   text-decoration: none;
 }
+.search-menu .card {
+  width: 20rem;
+}
 .search-bar.form-control {
   display: inline;
 }
