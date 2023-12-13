@@ -14,8 +14,11 @@ const RecipeDetails = ({ match }) => {
   const [recipe, setRecipe] = useState(null);
   const [commentContent, setCommentContent] = useState('');
   const [comments, setComments] = useState([]);
-  const URL =  "http://localhost:5000/api/comments";
-  const URLSaved =  "http://localhost:5000/api/comments/saved";
+  const REMOTE_URL = "https://recipepad-server.onrender.com";
+  const LOCAL_URL = "http://localhost:5000";
+  const BASE_URL = REMOTE_URL||LOCAL_URL;
+  const URL = `${BASE_URL}/api/comments`;
+  const URLSaved =  `${BASE_URL}/api/comments/saved`;
   // const [user, setUser] = useState({
   //   id: '656707bb65aba2b8a9f430f8',
   //   // username: 'example_user',

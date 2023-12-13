@@ -6,8 +6,10 @@ const request = axios.create({
 
 // export const BASE_API = process.env.REACT_APP_ROOT;
 // export const USERS_API = `${BASE_API}/users`;
-export const BASE_API = "http://localhost:5000";
-export const USERS_API = `${BASE_API}/users`;
+const REMOTE_URL = "https://recipepad-server.onrender.com";
+const LOCAL_URL = "http://localhost:5000";
+const BASE_URL = REMOTE_URL||LOCAL_URL;
+export const USERS_API = `${BASE_URL}/users`;
 
 export const deleteUser = async (user) => {
   const response = await request.delete(
@@ -21,7 +23,6 @@ export const findAllUsers = async () => {
 };
 
 export const findUserById = async (id) => {
-  console.log(BASE_API);
   const response = await request.get(`${USERS_API}/${id}`);
   return response.data;
 };
