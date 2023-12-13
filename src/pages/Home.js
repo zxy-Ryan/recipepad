@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {
-  MDBBtn,
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBTypography,
-} from "mdb-react-ui-kit";
+import { MDBCol, MDBContainer, MDBRow, MDBTypography } from "mdb-react-ui-kit";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipes } from "../redux/features/recipeSlice";
+import CardRecipe from "../components/CardRecipe";
 
 const Home = () => {
   const { recipes, loading } = useSelector((state) => ({ ...state.recipe }));
@@ -27,20 +22,24 @@ const Home = () => {
       style={{
         margin: "auto",
         padding: "15px",
-        maxWidth: "1400px",
+        maxWidth: "1000px",
         alignContent: "center",
       }}
     >
       <MDBRow className="mt-5">
-        {/* {recipes.length === 0 && (
+        {recipes.length === 0 && (
           <MDBTypography className="text-center mb-0" tag="h2">
-            No recipes found
+            No recipe found
           </MDBTypography>
-        )} */}
+        )}
+
         <MDBCol>
           <MDBContainer>
             <MDBRow className="row-cols-1 row-cols-md-3 g-2">
-              {recipes && recipes.map((item, index) => <h2>Recipe Card</h2>)}
+              {recipes &&
+                recipes.map((item, index) => (
+                  <CardRecipe key={index} {...item} />
+                ))}
             </MDBRow>
           </MDBContainer>
         </MDBCol>

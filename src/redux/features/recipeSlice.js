@@ -15,17 +15,29 @@ export const createRecipe = createAsyncThunk(
   }
 );
 
-// export const getRecipes = createAsyncThunk(
-//   "recipe/getRecipes",
-//   async (page, { rejectWithValue }) => {
-//     try {
-//       const response = await api.getRecipes(page);
-//       return response.data;
-//     } catch (err) {
-//       return rejectWithValue(err.response.data);
-//     }
-//   }
-// );
+export const getRecipes = createAsyncThunk(
+  "recipe/getRecipes",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.getRecipes();
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const getRecipe = createAsyncThunk(
+  "recipe/getRecipe",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await api.getRecipe(id);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 
 const recipeSlice = createSlice({
   name: "recipe",
@@ -61,20 +73,28 @@ const recipeSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
-    //   [getRecipes.pending]: (state, action) => {
-    //     state.loading = true;
-    //   },
-    //   [getRecipes.fulfilled]: (state, action) => {
-    //     state.loading = false;
-    //     state.recipes = action.payload.data;
-    //     state.numberOfPages = action.payload.numberOfPages;
-    //     state.currentPage = action.payload.currentPage;
-    //     state.totalRecipesData = action.payload.totalRecipesData;
-    //   },
-    //   [getRecipes.rejected]: (state, action) => {
-    //     state.loading = false;
-    //     state.error = action.payload.message;
-    //   },
+    [getRecipes.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getRecipes.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.recipes = action.payload;
+    },
+    [getRecipes.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [getRecipe.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getRecipe.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.recipe = action.payload;
+    },
+    [getRecipe.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
   },
 });
 

@@ -6,8 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import SingleRecipe from "./pages/SingleRecipe";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Footer from "./components/Footer";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/features/authSlice";
@@ -31,6 +31,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/recipe/:id" element={<SingleRecipe />} />
           <Route path="/login/*" element={<Login />} />
           <Route path="/register/*" element={<Register />} />
           <Route path="/addRecipe" element={<AddEditRecipe />} />
