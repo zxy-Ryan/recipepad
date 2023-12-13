@@ -51,7 +51,6 @@ const Login = () => {
 
   const googleSuccess = (credentialResp) => {
     const decode = jwtDecode(credentialResp.credential);
-    console.log(decode);
     const email = decode?.email;
     const name = decode?.name;
     const result = { email, name };

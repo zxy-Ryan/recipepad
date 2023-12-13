@@ -38,16 +38,12 @@ const Profile = () => {
     const account = await client.account();
     setAccount(account);
     setType("account");
-    console.log(account);
   };
 
   useEffect(() => {
-    console.log("useEffect executed");
     if (userId) {
-      console.log(userId);
       findUserById(userId);
     } else {
-      console.log("here");
       fetchAccount();
     }
   }, []);

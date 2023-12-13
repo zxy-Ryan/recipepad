@@ -48,7 +48,6 @@ const AddEditRecipe = () => {
   useEffect(() => {
     if (id) {
       const singleRecipe = userRecipes.find((recipe) => recipe._id === id);
-      console.log(singleRecipe);
       setRecipeData({ ...singleRecipe });
     }
   }, [id]);

@@ -6,7 +6,6 @@ import CardRecipe from "../components/CardRecipe";
 
 const Home = () => {
   const { recipes, loading } = useSelector((state) => ({ ...state.recipe }));
-  console.log(recipes);
   const dispatch = useDispatch();
 
   useEffect(() => {
