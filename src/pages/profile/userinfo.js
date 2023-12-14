@@ -40,19 +40,18 @@ function UserInfoTab({ user, type }) {
         marginTop: "80px",
       }}
     >
-      {/* <h3 class="text-secondary">UserInfo</h3> */}
       <Form onSubmit={save}>
-        <Form.Group className="mt-3">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            type="text"
-            name="name"
-            defaultValue={userInfo.name}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
         {isAccount && (
           <>
+            <Form.Group className="mt-3">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                defaultValue={userInfo.name}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
             <Form.Group className="mt-3">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -75,31 +74,52 @@ function UserInfoTab({ user, type }) {
               <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 type="text"
-                name="phoneNumber"
-                defaultValue={userInfo.phoneNumber}
+                name="tel"
+                defaultValue={userInfo.tel}
                 onChange={handleInputChange}
               />
             </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Introduction</Form.Label>
+              <Form.Control
+                type="text"
+                name="introduction"
+                defaultValue={userInfo.introduction}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+            <Button
+              variant="primary"
+              type="button"
+              className="mt-4"
+              onClick={save}
+            >
+              Save Changes
+            </Button>
           </>
         )}
-        <Form.Group className="mt-3">
-          <Form.Label>Introduction</Form.Label>
-          <Form.Control
-            type="text"
-            name="introduction"
-            defaultValue={userInfo.introduction}
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        {isAccount && (
-          <Button
-            variant="primary"
-            type="button"
-            className="mt-4"
-            onClick={save}
-          >
-            Save Changes
-          </Button>
+
+        {!isAccount && (
+          <>
+            <Form.Group className="mt-3">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                defaultValue={userInfo.name}
+                readOnly
+              />
+            </Form.Group>
+            <Form.Group className="mt-3">
+              <Form.Label>Introduction</Form.Label>
+              <Form.Control
+                type="text"
+                name="introduction"
+                defaultValue={userInfo.introduction}
+                readOnly
+              />
+            </Form.Group>
+          </>
         )}
       </Form>
     </div>

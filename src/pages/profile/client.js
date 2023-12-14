@@ -59,3 +59,9 @@ export const findMealById = async (idMeal) => {
   const data = await response.json();
   return data.meals[0]; 
 };
+
+export const findComments = async (userId) => {
+  const response = await request.get(`${BASE_URL}/api/comments/user/${userId}`);
+  console.log(response);
+  return response.data;
+};

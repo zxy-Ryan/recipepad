@@ -108,11 +108,25 @@ const updateSavedRecipe = async (newRecipe, userId) => {
         console.log(commentsData.comments)
         setComments(commentsData.comments);
         // console.log(comments) 
-      
+        scrollToComment();
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
+
+    const scrollToComment = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const id = hash.replace("#", "");
+        setTimeout(() => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView();
+          }
+        }, 0);
+      }
+    };
+
     fetchRecipeAndComments();
   },  [recipeId]);
 
@@ -301,7 +315,7 @@ const updateSavedRecipe = async (newRecipe, userId) => {
       </li>
 ))} */}
 {user && comments.map((comment, index) => (
-      <li key={index}>
+      <li key={index} id={`comment-${comment._id}`}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Link to={`/Profile/${comment.userId}`}>

@@ -3,13 +3,20 @@ import { ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "./client";
 
-function Favorites({ userId }) {
+function Favorites({ userObject }) {
   const [favorites, setFavorites] = useState(null);
+  const userId = userObject._id;
 
   const fetchFavorites = async (userId) => {
     try {
       const fetchedFavorites = await client.findFavorites(userId);
-      setFavorites(fetchedFavorites);
+      const favoriteRecipes = await Promise.all(
+        fetchedFavorites.map(async (favorite) => {
+          const recipeDetails = await client.findMealById(favorite.likedRecipeId);
+          return recipeDetails;
+        })
+      );
+      setFavorites(favoriteRecipes);
     } catch (error) {
       console.error("Error fetching followings:", error);
     }
@@ -26,8 +33,8 @@ function Favorites({ userId }) {
   return (
     <ListGroup>
       {favorites.map((favorite, index) => (
-        <ListGroup.Item key={index} action href={`/user/${favorite._id}`}>
-          {favorite.likedRecipeId}
+        <ListGroup.Item key={index} action href={`/Details/${favorite.idMeal}`}>
+          {favorite.strMeal}
         </ListGroup.Item>
       ))}
     </ListGroup>

@@ -3,18 +3,21 @@ import { ListGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "./client";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function UserListTab() {
   const [users, setUsers] = useState(null);
+  const { user } = useSelector((state) => ({ ...state.auth }));
 
   const findAllUsers = async () => {
     const users = await client.findAllUsers();
     setUsers(users);
   };
 
-  const deleteUser = async (userId) => {
-    await client.deleteUser(userId);
-    findAllUsers(); 
+  const deleteUser = async (event, u) => {
+    event.preventDefault();
+    await client.deleteUser(u);
+    findAllUsers();
   };
 
   useEffect(() => {
@@ -27,20 +30,19 @@ function UserListTab() {
 
   return (
     <ListGroup>
-      {users.map((user, index) => (
-        <ListGroup.Item 
-          key={index} 
-          action 
+      {users.map((u, index) => (
+        <ListGroup.Item
+          key={index}
+          action
           className="d-flex justify-content-between align-items-center"
-          href={`/project/profile/${user._id}`}
+          href={`/profile/${u._id}`}
         >
-          {user.name}
-          <Button 
-            variant="danger" 
-            onClick={() => deleteUser(user._id)}
-          >
-            Delete
-          </Button>
+          {u.name}
+          {user.result.role === "admin" && (
+            <Button variant="danger" onClick={(e) => deleteUser(e, u)}>
+              Delete
+            </Button>
+          )}
         </ListGroup.Item>
       ))}
     </ListGroup>

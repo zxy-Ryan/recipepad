@@ -3,8 +3,9 @@ import { ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "./client";
 
-function Followings({ userId }) {
+function Followings({ userObject }) {
   const [followings, setFollowings] = useState(null);
+  const userId = userObject._id;
 
   const fetchFollowings = async (userId) => {
     try {
@@ -26,7 +27,7 @@ function Followings({ userId }) {
   return (
     <ListGroup>
       {followings.map((following, index) => (
-        <ListGroup.Item key={index} action href={`/user/${following._id}`}>
+        <ListGroup.Item key={index} action href={`/profile/${following.followingId._id}`}>
           {following.followingId.name}
         </ListGroup.Item>
       ))}

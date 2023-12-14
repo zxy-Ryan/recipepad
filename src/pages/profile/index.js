@@ -17,27 +17,38 @@ import FollowersTab from "./followers";
 
 const Profile = () => {
   const params = useParams();
-  const userId = params.userId; // Assuming the URL contains the user ID
-  // const user = userData.find(u => u.id === userId);
-  const comments = commentsData;
-  const favorites = favoritesData;
+  const userId = params.userId; 
 
   const [account, setAccount] = useState(null);
   const [user, setUser] = useState(null);
   const [type, setType] = useState(null);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   const findUserById = async (userId) => {
-    const user = await client.findUserById(userId);
-    setUser(user);
-    setType("guest");
+    try {
+      setIsLoading(true);
+      const user = await client.findUserById(userId);
+      setUser(user);
+      setType("guest");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false); 
+    }
   };
 
   const fetchAccount = async () => {
-    const account = await client.account();
-    setAccount(account);
-    setType("account");
+    try {
+      setIsLoading(true); 
+      const account = await client.account();
+      console.log(account);
+      setAccount(account);
+      setType("account");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false); 
+    }
   };
 
   useEffect(() => {
@@ -46,7 +57,11 @@ const Profile = () => {
     } else {
       fetchAccount();
     }
-  }, []);
+  }, [userId]);
+
+  if (isLoading) {
+    return <div>Loading...</div>; 
+  }
 
   if (!account && !user) {
     return (
@@ -59,7 +74,7 @@ const Profile = () => {
           marginTop: "120px",
         }}
       >
-        <h1>Loading...</h1>
+        <h1>Can't find the user.</h1>
       </div>
     );
   }
@@ -83,13 +98,16 @@ const Profile = () => {
           <UserInfoTab user={account || user} type={type} />
         </Tab>
         <Tab eventKey="followings" title="Followings">
-          <FollowingsTab userId={userId} />
+          <FollowingsTab userObject={account || user} />
         </Tab>
-        <Tab eventKey="followers" title="Follower">
-          <FollowersTab userId={userId} />
+        <Tab eventKey="followers" title="Followers">
+          <FollowersTab userObject={account || user} />
         </Tab>
         <Tab eventKey="favorites" title="Favorites">
-          <FavoritesTab userId={userId} />
+          <FavoritesTab userObject={account || user} />
+        </Tab>
+        <Tab eventKey="comments" title="Comments">
+          <CommentsTab userObject={account || user} />
         </Tab>
       </Tabs>
     </Container>
