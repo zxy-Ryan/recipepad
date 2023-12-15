@@ -76,7 +76,7 @@ const formatDate = (dateString) => {
 
 const updateSavedRecipe = async (newRecipe, userId) => {
   try {
-    const response = await axios.put(`${LOCAL_URL}/update/${userId}`, newRecipe);
+    const response = await axios.put(`${REMOTE_URL}/update/${userId}`, newRecipe);
     return response
   } catch (error) {
     console.error('Failed to update savedRecipe:', error);
@@ -307,22 +307,6 @@ const updateSavedRecipe = async (newRecipe, userId) => {
         </div>
       )}
 
-<div className="mb-4">
-        <ul style={{listStyle:'none'}}>
-         { (role === 'admin' || role==='vip') && usersSaveRecipe.map((userSaveRecipe, index) => (
-      <li key={index} id={`userSaveRecipe-${userSaveRecipe._id}`}>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Link to={`/Profile/${userSaveRecipe.userId}`}>
-              {/* <span style={{ marginRight: '10px' }}>{comment.userId}</span> */}
-              <span style={{ marginRight: '10px' }}>{userSaveRecipe}</span>
-            </Link>
-          </div>
-        </div>
-      </li>
-    ))}
-        </ul>
-      </div>
 
       {user && (
         <div className="mb-4">
