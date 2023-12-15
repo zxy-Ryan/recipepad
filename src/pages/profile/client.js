@@ -8,8 +8,7 @@ const request = axios.create({
 // export const USERS_API = `${BASE_API}/users`;
 const REMOTE_URL = "https://recipepad-server.onrender.com";
 const LOCAL_URL = "http://localhost:5000";
-// const BASE_URL = REMOTE_URL||LOCAL_URL;
-const BASE_URL = LOCAL_URL;
+const BASE_URL = REMOTE_URL||LOCAL_URL;
 export const USERS_API = `${BASE_URL}/users`;
 
 export const deleteUser = async (user) => {

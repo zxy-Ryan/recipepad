@@ -20,12 +20,24 @@ const initialState = {
   email: "",
   password: "",
   confirmPassword: "",
+  tel: "",
+  introduction: "",
+  role: "",
 };
 
 const Register = () => {
   const [formValue, setFormValue] = useState(initialState);
   const { loading, error } = useSelector((state) => ({ ...state.auth }));
-  const { email, password, firstName, lastName, confirmPassword } = formValue;
+  const {
+    email,
+    password,
+    firstName,
+    lastName,
+    confirmPassword,
+    tel,
+    introduction,
+    role,
+  } = formValue;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // useEffect is triggered whenever the error state in your Redux store changes.
@@ -131,6 +143,39 @@ const Register = () => {
                 invalid
                 validation="Please confirm your password"
               />
+            </div>
+            <div className="col-md-12">
+              <MDBInput
+                value={tel}
+                name="tel"
+                type="text"
+                label="Phone Number"
+                onChange={onInputChange}
+              />
+            </div>
+            <div className="col-md-12">
+              <MDBInput
+                value={introduction}
+                name="introduction"
+                textarea
+                rows="4"
+                label="Introduct yourself"
+                onChange={onInputChange}
+              />
+            </div>
+            <div className="col-md-12">
+              <select
+                className="form-select"
+                id="roleSelect"
+                name="role"
+                value={role}
+                onChange={onInputChange}
+                required
+              >
+                <option value="">Select a role</option>
+                <option value="regular">user</option>
+                <option value="vip">VIP user</option>
+              </select>
             </div>
             <div className="col-12">
               <MDBBtn style={{ width: "100%" }} className="mt-2">

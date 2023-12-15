@@ -4,8 +4,7 @@ const REMOTE_URL = "https://recipepad-server.onrender.com";
 const LOCAL_URL = "http://localhost:5000";
 
 const API = axios.create({
-  // baseURL: REMOTE_URL || LOCAL_URL,
-  baseURL: LOCAL_URL,
+  baseURL: REMOTE_URL || LOCAL_URL,
   withCredentials: true,
 });
 
