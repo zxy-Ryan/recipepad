@@ -33,7 +33,6 @@ const Profile = () => {
       setUser(user);
       if (fetchedAccount && fetchedAccount._id === userId) {
         setType("account");
-        console.log(type);
       } else {
         setType("guest");
       }
@@ -49,7 +48,6 @@ const Profile = () => {
     try {
       setIsLoading(true); 
       const account = await client.account();
-      console.log(account);
       setAccount(account);
       setType("account");
       return account;

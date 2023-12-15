@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import { login, googleSignIn } from "../redux/features/authSlice";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
+import "./index.css"
 
 const initialState = {
   email: "",
@@ -101,7 +102,7 @@ const Login = () => {
                 validation="Please provide a valid password"
               />
             </div>
-            <div className="col-12">
+            <div className="col-12 login-btn">
               <MDBBtn style={{ width: "100%" }} className="mt-2">
                 {loading && (
                   <MDBSpinner
@@ -119,9 +120,9 @@ const Login = () => {
           {/*When a user attempts to sign in using their Google credentials on your website,
           your client-side code initiates an authentication request to Google.
           The client ID is included in this request to identify your application.*/}
-          <GoogleLogin onSuccess={googleSuccess} onFailure={googleFailure} />
+          {/* <GoogleLogin onSuccess={googleSuccess} onFailure={googleFailure} /> */}
         </MDBCardBody>
-        <MDBCardFooter>
+        <MDBCardFooter className="register-navigate">
           <Link to="/register">Don't have an account? Sign Up</Link>
         </MDBCardFooter>
       </MDBCard>

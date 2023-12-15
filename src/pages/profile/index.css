@@ -16,5 +16,38 @@
       flex-direction: column;
     }
   }
-
+  .save-btn{
+    background-color: rgb(238,230,234)!important;
+    color:#606080
+  }
+  .following-list a{
+    text-align: left;
+  }
+  .following-list.list-group{
+    max-width: 400px; 
+    border-radius: 0;
+  }
+  .follower-list a{
+    text-align: left;
+  }
+  .follower-list.list-group{
+    max-width: 400px; 
+    border-radius: 0;
+  }
+.favourite-list.list-group{
+    max-width: 400px; 
+    border-radius: 0;
+}
+.follow-form button{
+    background-color: rgb(238,230,234)!important;
+    color:#606080;
+    border: 0;
+}
+.comment-list a{
+    text-align: left;
+}
+.comment-list.list-group{
+    max-width: 400px; 
+    border-radius: 0;
+}
   

@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "./profile/client";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import "./index.css";
 
 function UserListTab() {
   const [users, setUsers] = useState(null);
@@ -34,7 +35,7 @@ function UserListTab() {
         <Card.Header>
           <h4>User List</h4> 
         </Card.Header>
-        <ListGroup variant="flush"> 
+        <ListGroup variant="flush delete-user"> 
           {users.map((u, index) => (
             <ListGroup.Item
               key={index}

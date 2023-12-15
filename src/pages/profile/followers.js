@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "./client";
+import "./index.css";
 
 function Followers({ userObject }) {
   const [followers, setFollowers] = useState([]);
@@ -25,7 +26,7 @@ function Followers({ userObject }) {
   }
 
   return (
-    <ListGroup>
+    <ListGroup className="follower-list mt-3 ms-3">
       {followers
         .filter(follower => follower.followerId) 
         .map((follower, index) => (

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { clearCurrentUser } from "./reducer";
 import { useDispatch } from "react-redux";
+import "./index.css";
 
 function UserInfoTab({ user, type }) {
   const [userInfo, setUserInfo] = useState(user);
@@ -92,7 +93,7 @@ function UserInfoTab({ user, type }) {
         marginTop: "80px",
       }}
     >
-      <Form onSubmit={save}>
+      <Form onSubmit={save} className="follow-form">
         {isAccount && (
           <>
             <Form.Group className="mt-3">
@@ -143,7 +144,7 @@ function UserInfoTab({ user, type }) {
             <Button
               variant="primary"
               type="button"
-              className="mt-4"
+              className="mt-4 save-btn"
               onClick={save}
             >
               Save Changes
@@ -175,7 +176,7 @@ function UserInfoTab({ user, type }) {
         )}
 
         {!isAccount && isLoggedIn && !hasFollowed && (
-          <Button variant="primary" onClick={followUser} className="mt-3">
+          <Button  onClick={followUser} className="mt-3">
             Follow
           </Button>
         )}
@@ -183,7 +184,7 @@ function UserInfoTab({ user, type }) {
         {!isAccount && isLoggedIn && hasFollowed && (
           <>
             <p className="text-left mb-3 mt-3">Followed</p>
-            <Button variant="secondary" onClick={unFollowUser} className="mt-3">
+            <Button  onClick={unFollowUser} className="mt-3">
               Unfollow
             </Button>
           </>

@@ -13,6 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { register } from "../redux/features/authSlice";
+import "./index.css"
 
 const initialState = {
   firstName: "",
@@ -177,7 +178,7 @@ const Register = () => {
                 <option value="vip">VIP user</option>
               </select>
             </div>
-            <div className="col-12">
+            <div className="col-12 register-btn">
               <MDBBtn style={{ width: "100%" }} className="mt-2">
                 {loading && (
                   <MDBSpinner
@@ -192,7 +193,7 @@ const Register = () => {
             </div>
           </MDBValidation>
         </MDBCardBody>
-        <MDBCardFooter>
+        <MDBCardFooter className="login-navigate">
           <Link to="/login">Already have an account? Sign In</Link>
         </MDBCardFooter>
       </MDBCard>

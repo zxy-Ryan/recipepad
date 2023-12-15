@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "./client";
+import "./index.css";
 
 function Followings({ userObject }) {
   const [followings, setFollowings] = useState(null);
@@ -25,7 +26,7 @@ function Followings({ userObject }) {
   }
 
   return (
-    <ListGroup>
+    <ListGroup className="following-list mt-3 ms-3">
       {followings.filter(following => following.followingId) 
       .map((following, index) => (
         <ListGroup.Item key={index} action href={`/profile/${following.followingId._id}`}>

@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "./client";
 // import { getSavedRecipe } from "../../components/Details"
 import axios from "axios";
+import "./index.css";
 
 function Favorites({ userObject }) {
   const [favorites, setFavorites] = useState(null);
@@ -58,7 +59,7 @@ function Favorites({ userObject }) {
   }
 
   return (
-    <ListGroup style={{ textAlign: 'left' }}>
+    <ListGroup style={{ textAlign: 'left' }} className="favourite-list mt-3 ms-3">
     {favorites.map((favorite, index) => (
         <ListGroup.Item key={index} action href={`/Details/${favorite.idMeal}`}>
           {favorite.strMeal}

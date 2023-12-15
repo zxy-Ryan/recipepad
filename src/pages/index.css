@@ -24,3 +24,26 @@
   background-color: rgb(238,230,234);
   border-radius: none;
 }
+.login-btn button{
+  background-color: rgb(238,230,234)!important;
+  color:#606080;
+  border: 0;
+}
+.register-navigate a{
+  text-decoration: none;
+  color:purple;
+  
+}
+.register-btn button{
+  background-color: rgb(238,230,234)!important;
+  color:#606080;
+  border: 0;
+}
+.login-navigate a{
+  text-decoration: none;
+  color:purple;
+}
+.delete-user button{
+  background-color: purple!important;
+  border: 0;
+}

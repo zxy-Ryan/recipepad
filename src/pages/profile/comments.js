@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "./client";
+import "./index.css";
 
 function CommentsTab({ userObject }) {
   const [comments, setComments] = useState([]);
@@ -25,7 +26,7 @@ function CommentsTab({ userObject }) {
   }
 
   return (
-    <ListGroup>
+    <ListGroup className="comment-list">
       {comments.map((comment, index) => (
         <ListGroup.Item key={index} action href={`/Details/${comment.recipeId}#comment-${comment._id}`}>
           {comment.commentContent}
