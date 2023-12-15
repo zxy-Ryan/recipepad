@@ -116,7 +116,7 @@ const [selectedArea, setSelectedArea] = useState('');
 
         <MDBCol>
           <MDBContainer>
-            <MDBRow className="row-cols-1 row-cols-md-3 g-2">
+            <MDBRow className="row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
               {recipes &&
                 recipes.map((recipe, index) => (
                   <CardRecipe key={index} imageFile={recipe.strMealThumb} _id={recipe.idMeal} title={recipe.strMeal} />

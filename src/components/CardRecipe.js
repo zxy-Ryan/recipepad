@@ -8,6 +8,7 @@ import {
   MDBCardGroup,
 } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
+import "./index.css";
 
 const excerpt = (str) => {
   if (str.length > 100) {
@@ -38,6 +39,7 @@ const CardRecipe = ({ imageFile, _id, title }) => {
               <Link to={`/recipe/${_id}`}>Read More</Link>
             )} */}
           </MDBCardText>
+          <Link to={`/recipe/${_id}`} className = 'btn btn-small'>Read More</Link>
         </MDBCardBody>
       </MDBCard>
     </MDBCardGroup>

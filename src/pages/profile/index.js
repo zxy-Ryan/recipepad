@@ -11,6 +11,7 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import FollowingsTab from "./followings";
 import FollowersTab from "./followers";
+import  "./index.css";
 
 const Profile = () => {
   const params = useParams();
@@ -103,7 +104,7 @@ const Profile = () => {
       }}
     >
       <h1 class="text-secondary mb-4">Profile</h1>
-      <Tabs defaultActiveKey="userInfo" id="profile-tabs">
+      <Tabs defaultActiveKey="userInfo" id="profile-tabs" className="responsive-tabs">
         <Tab eventKey="userList" title="User List">
           <UserListTab />
         </Tab>
