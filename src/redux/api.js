@@ -27,6 +27,6 @@ export const getRecipes = () => API.get("/recipe");
 export const getRecipe = (id) => API.get(`/recipe/${id}`);
 
 export const signout = async () => {
-  const response = await API.post("/signout");
+  const response = await API.post("/users/signout");
   return response.data;
 };

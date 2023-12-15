@@ -93,24 +93,11 @@ const updateSavedRecipe = async (newRecipe, userId) => {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`);
         const data = await response.json();
         setRecipe(data.meals[0]);
-
         const recipeSaved = await isRecipeSaved();
-        // const userId = user.id
-        // const savedRecipe = await getSavedRecipe(userId);
-        // const isRecipeSaved = savedRecipe.includes(recipeId);
-        // console.log(savedRecipe)
-        // console.log(isRecipeSaved); 
-        console.log("9876");
-        console.log(recipeSaved);
         setIsSaved(recipeSaved); 
-        console.log(isSaved);
         // 获取评论信息
-        console.log(recipeId)
         const commentsData = await getCommentsForRecipe(recipeId);
-        console.log("fetch1")
-        console.log(commentsData.comments)
         setComments(commentsData.comments);
-        // console.log(comments) 
         scrollToComment();
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -150,7 +137,6 @@ const updateSavedRecipe = async (newRecipe, userId) => {
     };
     try {
         const response = await createComment(commentData)
-        console.log("this is response"+response)
         if (response) {
         
         setCommentContent(''); 
@@ -187,14 +173,9 @@ const updateSavedRecipe = async (newRecipe, userId) => {
       // const userId = user.id;
       
       // console.log(userId)
-      console.log("123")
       console.log(userId);
       const savedRecipe = await getSavedRecipe(userId);
-      console.log("isRecipeSaved");
-      console.log(savedRecipe);
       const isRecipeSaved = savedRecipe.user.saveRecipe.includes(recipeId);
-      console.log("123456")
-      console.log(isRecipeSaved); 
       return isRecipeSaved;
     } catch (error) {
       console.error('Error fetching savedRecipe:', error);
@@ -208,7 +189,6 @@ const updateSavedRecipe = async (newRecipe, userId) => {
     if (user) {
       if (isSaved) {
        
-        console.log('Unsave recipe');
         
 
         // const savedRecipe = await getSavedRecipe(user.id);
@@ -216,12 +196,10 @@ const updateSavedRecipe = async (newRecipe, userId) => {
         
         const updatedSaveRecipe = savedRecipe.user.saveRecipe.filter(id => id !== recipeId);
         savedRecipe.user.saveRecipe = updatedSaveRecipe
-        console.log(savedRecipe.user.saveRecipe)
         // const response = await updateSavedRecipe(savedRecipe.user.saveRecipe, user.id)
         const response = await updateSavedRecipe(savedRecipe.user.saveRecipe, userId)
         
         
-        console.log(isSaved)
         
         setIsSaved(!isSaved);
         
@@ -235,9 +213,7 @@ const updateSavedRecipe = async (newRecipe, userId) => {
         savedRecipe.user.saveRecipe = [...updatedSaveRecipe, recipeId];
         // const response = await updateSavedRecipe(savedRecipe.user.saveRecipe, user.id);
         const response = await updateSavedRecipe(savedRecipe.user.saveRecipe, userId)
-        
-        console.log(savedRecipe.user.saveRecipe)
-        setIsSaved(!isSaved);
+                setIsSaved(!isSaved);
       }
     } else {
       console.log('User is not logged in');
@@ -246,34 +222,6 @@ const updateSavedRecipe = async (newRecipe, userId) => {
   };
   // console.log("t1")
   // console.log(Object.values(comments))
-
-  const usersSaveRecipe = ['123', '456']
-
-
-  // const getFollowerIds = async (recipeId) =>{
-
-  // }
- 
-  // const fetchLikedUsers = async () => {
-  //   try {
-  //     const response = await axios.get(`${LOCAL_URL}/likes/${recipeId}`);
-  //     const likedUserIds = response.data;
-
-  //     console.log(likedUserIds);
-  //   } catch (error) {
-  //     console.error('Error fetching liked users:', error);
-  //   }
-  // };
-  
-  // fetchLikedUsers();
-  
-  
-
-  // const checkUsersSaveRecipe = async () =>{
-  //   // const followerIds = [];
-  //   const followerIds = await getFollowerIds(userId);
-
-  // }
 
   return (
     <div >
@@ -330,25 +278,6 @@ const updateSavedRecipe = async (newRecipe, userId) => {
       {/* 显示已有的评论 */}
       <div className="mb-4">
         <ul style={{listStyle:'none'}}>
-          {/* {Object.entries(comments).map(([key, value], index) => (
-  <li key={index}>
-  <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            {key === 'userId' && (
-              <Link to={`/Profile/${value}`}>
-                <span style={{ marginRight: '10px' }}>{value}</span>
-              </Link>
-            )}
-            {key === 'time' && (
-              <span>{value}</span>
-            )}
-          </div>
-          {key === 'commentContent' && (
-            <div>{value}</div>
-          )}
-        </div>
-      </li>
-))} */}
 {user && comments.map((comment, index) => (
       <li key={index} id={`comment-${comment._id}`}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
