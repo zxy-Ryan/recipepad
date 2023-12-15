@@ -10,7 +10,6 @@ function Favorites({ userObject }) {
   const [favorites, setFavorites] = useState(null);
  
   const userId = userObject._id;
-  console.log(userId);
   const REMOTE_URL = "https://recipepad-server.onrender.com";
   const LOCAL_URL = "http://localhost:5000";
   const BASE_URL = REMOTE_URL||LOCAL_URL;

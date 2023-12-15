@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "./client";
 import "./index.css";
 
-function Followings({ userObject }) {
+function Followings({ userObject, activeKey }) {
   const [followings, setFollowings] = useState(null);
   const userId = userObject._id;
 
@@ -12,14 +12,17 @@ function Followings({ userObject }) {
     try {
       const fetchedFollowings = await client.findFollowings(userId);
       setFollowings(fetchedFollowings);
+      console.log(fetchedFollowings);
     } catch (error) {
       console.error("Error fetching followings:", error);
     }
   };
 
   useEffect(() => {
-    fetchFollowings(userId);
-  }, []);
+    if (activeKey === "followings") {
+      fetchFollowings(userId);
+    }
+  }, [activeKey, userId]);
 
   if (!followings || followings.length === 0) {
     return <div>No followings found.</div>;

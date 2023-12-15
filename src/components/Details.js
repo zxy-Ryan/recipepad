@@ -302,7 +302,7 @@ const updateSavedRecipe = async (newRecipe, userId) => {
                 {
                   comments.map((comment, index) => (
                     <>
-                      <div class="card-body p-4">
+                      <div class="card-body p-4" id={`comment-${comment._id}`}>
                         {index === 0 && (
                           <>
                             <h4 className="mb-0">Recent comments</h4>

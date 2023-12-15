@@ -11,17 +11,18 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import FollowingsTab from "./followings";
 import FollowersTab from "./followers";
-import  "./index.css";
+import "./index.css";
 
 const Profile = () => {
   const params = useParams();
-  const userId = params.userId; 
+  const userId = params.userId;
 
   const [account, setAccount] = useState(null);
   const [user, setUser] = useState(null);
   const [type, setType] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const [activeKey, setActiveKey] = useState("userInfo");
 
   const findUserById = async (userId) => {
     try {
@@ -46,7 +47,7 @@ const Profile = () => {
 
   const fetchAccount = async () => {
     try {
-      setIsLoading(true); 
+      setIsLoading(true);
       const account = await client.account();
       setAccount(account);
       setType("account");
@@ -55,7 +56,7 @@ const Profile = () => {
       console.error(error);
       return null;
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 
@@ -68,11 +69,11 @@ const Profile = () => {
   }, [userId]);
 
   if (isLoading) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   if (!isDataLoaded) {
-    return <div>Loading user information...</div>; 
+    return <div>Loading user information...</div>;
   }
 
   if (!account && !user) {
@@ -102,7 +103,13 @@ const Profile = () => {
       }}
     >
       <h1 class="text-secondary mb-4">Profile</h1>
-      <Tabs defaultActiveKey="userInfo" id="profile-tabs" className="responsive-tabs">
+      <Tabs
+        defaultActiveKey="userInfo"
+        id="profile-tabs"
+        className="responsive-tabs"
+        activeKey={activeKey}
+        onSelect={(k) => setActiveKey(k)}
+      >
         {/* <Tab eventKey="userList" title="User List">
           <UserListTab />
         </Tab> */}
@@ -110,10 +117,10 @@ const Profile = () => {
           <UserInfoTab user={user || account} type={type} />
         </Tab>
         <Tab eventKey="followings" title="Followings">
-          <FollowingsTab userObject={user || account} />
+          <FollowingsTab userObject={user || account} activeKey={activeKey} />
         </Tab>
         <Tab eventKey="followers" title="Followers">
-          <FollowersTab userObject={user || account} />
+          <FollowersTab userObject={user || account} activeKey={activeKey} />
         </Tab>
         <Tab eventKey="favorites" title="Favorites">
           <FavoritesTab userObject={user || account} />
