@@ -17,7 +17,7 @@ const excerpt = (str) => {
   return str;
 };
 
-const CardRecipe = ({ imageFile, description, _id, title, tags, name }) => {
+const CardRecipe = ({ imageFile, _id, title }) => {
   return (
     <MDBCardGroup>
       <MDBCard
@@ -31,16 +31,13 @@ const CardRecipe = ({ imageFile, description, _id, title, tags, name }) => {
           position="top"
           style={{ maxWidth: "100%", height: "180px" }}
         />
-        <div className="top-left">{name}</div>
-        <span className="text-start tag-card">
-          {tags.map((item) => `#${item} `)}
-        </span>
         <MDBCardBody>
           <MDBCardTitle className="text-start">{title}</MDBCardTitle>
           <MDBCardText className="text-start">
-            {excerpt(description)}
-            <br/>
-            {/* <Link to={`/recipe/${_id}`} className = 'btn btn-small'>Read More</Link> */}
+            <Link to={`/Details/${_id}`}>Detail</Link>
+            {/* {excerpt(description).length > 100 && (
+              <Link to={`/recipe/${_id}`}>Read More</Link>
+            )} */}
           </MDBCardText>
           <Link to={`/recipe/${_id}`} className = 'btn btn-small'>Read More</Link>
         </MDBCardBody>

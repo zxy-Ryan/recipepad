@@ -5,6 +5,7 @@ const LOCAL_URL = "http://localhost:5000";
 
 const API = axios.create({
   baseURL: REMOTE_URL || LOCAL_URL,
+  // baseURL: LOCAL_URL,
   withCredentials: true,
 });
 
