@@ -244,7 +244,7 @@ const updateSavedRecipe = async (newRecipe, userId) => {
 
   return (
     <div >
-    <div className="container mt-4" style={{ textAlign: 'left' }}>
+    <div className="container mt-4" style={{ textAlign: 'left', padding: '60px' }}>
       {recipe ? (
         <div className="row">
           <div className="col-md-6 mb-4">
