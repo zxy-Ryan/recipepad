@@ -15,16 +15,24 @@ import {
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../redux/features/authSlice";
+import {useNavigate} from "react-router-dom";
+import * as client from "../redux/api.js"
 
 const Header = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(setLogout());
+    signout();
     toast.success("Logout successfully");
     // navigate("/");
   };
+  const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state.auth }));
+  const signout = async () => {
+    await client.signout();
+    navigate("/project/signin");
+};
 
   return (
     <MDBNavbar fixed="top" expand="lg" style={{ backgroundColor: "#f0e6ea" }}>

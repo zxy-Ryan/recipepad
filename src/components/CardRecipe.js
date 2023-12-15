@@ -10,12 +10,6 @@ import {
 import { Link } from "react-router-dom";
 import "./index.css";
 
-const excerpt = (str) => {
-  if (str.length > 100) {
-    str = str.substring(0, 100) + "...";
-  }
-  return str;
-};
 
 const CardRecipe = ({ imageFile, _id, title }) => {
   return (
@@ -34,12 +28,8 @@ const CardRecipe = ({ imageFile, _id, title }) => {
         <MDBCardBody>
           <MDBCardTitle className="text-start">{title}</MDBCardTitle>
           <MDBCardText className="text-start">
-            <Link to={`/Details/${_id}`}>Detail</Link>
-            {/* {excerpt(description).length > 100 && (
-              <Link to={`/recipe/${_id}`}>Read More</Link>
-            )} */}
           </MDBCardText>
-          <Link to={`/recipe/${_id}`} className = 'btn btn-small'>Read More</Link>
+          <Link to={`/Details/${_id}`} className = 'btn btn-small'>Detail</Link>
         </MDBCardBody>
       </MDBCard>
     </MDBCardGroup>

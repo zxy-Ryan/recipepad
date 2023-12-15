@@ -2,8 +2,12 @@
   margin-top: 30px;
 }
 .search-menu .card a {
-  color: #cc0000;
+  background-color: rgb(238,230,234);
   text-decoration: none;
+}
+.search-menu .card-body h5 {
+  color:#606080;
+  font-size: 1.25rem;
 }
 .search-menu .card {
   width: 20rem;
@@ -15,4 +19,8 @@
   width: 2em;
   height: 2em;
   margin-right: 10px;
+}
+.search-menu .search-btn{
+  background-color: rgb(238,230,234);
+  border-radius: none;
 }

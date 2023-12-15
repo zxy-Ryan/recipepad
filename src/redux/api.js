@@ -18,10 +18,15 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const signIn = (formData) => API.post("/users/signin", formData);
+export const signIn = (formData) =>  API.post("/users/signin", formData);
 export const signUp = (formData) => API.post("/users/signup", formData);
 export const googleSignIn = (result) => API.post("/users/googleSignIn", result);
 
 export const createRecipe = (recipeData) => API.post("/recipe", recipeData);
 export const getRecipes = () => API.get("/recipe");
 export const getRecipe = (id) => API.get(`/recipe/${id}`);
+
+export const signout = async () => {
+  const response = await API.post("/signout");
+  return response.data;
+};
