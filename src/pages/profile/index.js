@@ -112,16 +112,16 @@ const Profile = () => {
           <UserInfoTab user={user || account} type={type} />
         </Tab>
         <Tab eventKey="followings" title="Followings">
-          <FollowingsTab userObject={account || user} />
+          <FollowingsTab userObject={user || account} />
         </Tab>
         <Tab eventKey="followers" title="Followers">
-          <FollowersTab userObject={account || user} />
+          <FollowersTab userObject={user || account} />
         </Tab>
         <Tab eventKey="favorites" title="Favorites">
-          <FavoritesTab userObject={account || user} />
+          <FavoritesTab userObject={user || account} />
         </Tab>
         <Tab eventKey="comments" title="Comments">
-          <CommentsTab userObject={account || user} />
+          <CommentsTab userObject={user || account} />
         </Tab>
       </Tabs>
     </Container>

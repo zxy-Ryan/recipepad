@@ -229,6 +229,7 @@ const updateSavedRecipe = async (newRecipe, userId) => {
        
         // const savedRecipe = await getSavedRecipe(user.id);
         const savedRecipe = await getSavedRecipe(userId);
+        console.log(userId);
         const updatedSaveRecipe = savedRecipe.user.saveRecipe.filter(id => id !== recipeId);
         
         savedRecipe.user.saveRecipe = [...updatedSaveRecipe, recipeId];

@@ -26,11 +26,13 @@ function Followers({ userObject }) {
 
   return (
     <ListGroup>
-      {followers.map((follower, index) => (
-        <ListGroup.Item key={index} action href={`/profile/${follower.followerId._id}`}>
-          {follower.followerId.name}
-        </ListGroup.Item>
-      ))}
+      {followers
+        .filter(follower => follower.followerId) 
+        .map((follower, index) => (
+          <ListGroup.Item key={index} action href={`/profile/${follower.followerId._id}`}>
+            {follower.followerId.name}
+          </ListGroup.Item>
+        ))}
     </ListGroup>
   );
 }

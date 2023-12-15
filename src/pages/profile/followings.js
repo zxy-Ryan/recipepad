@@ -26,7 +26,8 @@ function Followings({ userObject }) {
 
   return (
     <ListGroup>
-      {followings.map((following, index) => (
+      {followings.filter(following => following.followingId) 
+      .map((following, index) => (
         <ListGroup.Item key={index} action href={`/profile/${following.followingId._id}`}>
           {following.followingId.name}
         </ListGroup.Item>
