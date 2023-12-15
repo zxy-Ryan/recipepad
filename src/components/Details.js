@@ -41,6 +41,7 @@ const RecipeDetails = ({ match }) => {
   };
 
   const getSavedRecipe = async (userId) => {
+    console.log(`${URLSaved}/${userId}`);
     const response = await axios.get(`${URLSaved}/${userId}`);
     return response.data;
   };
@@ -124,31 +125,36 @@ const updateSavedRecipe = async (newRecipe, userId) => {
 
   
   const handlePostComment = async () =>{
-    // const userId = user.id;
+    if(user){
+       // const userId = user.id;
     // const userId = userId;
     // const commentId = uuidv4(); 
     const commentData = {
-        // commentId: commentId,
-        userId: userId,
-        userName: userName,
-        recipeId: recipeId, 
-        commentContent: commentContent,
-        time: new Date().toISOString(), 
-    };
-    try {
-        const response = await createComment(commentData)
-        if (response) {
-        
-        setCommentContent(''); 
-        
-        setComments([...comments,commentData])
-        } else {
+      // commentId: commentId,
+      userId: userId,
+      userName: userName,
+      recipeId: recipeId, 
+      commentContent: commentContent,
+      time: new Date().toISOString(), 
+  };
+  try {
+      const response = await createComment(commentData)
+      if (response) {
+      
+      setCommentContent(''); 
+      
+      setComments([...comments,commentData])
+      } else {
 
-          console.error('Failed to post comment');
-        }
-      } catch (error) {
-        console.error('Error posting comment:', error);
+        console.error('Failed to post comment');
       }
+    } catch (error) {
+      console.error('Error posting comment:', error);
+    }
+    }else{
+      alert('User is not logged in'); 
+    }
+   
   };
 
   // useEffect(() => {
@@ -175,8 +181,17 @@ const updateSavedRecipe = async (newRecipe, userId) => {
       // console.log(userId)
       console.log(userId);
       const savedRecipe = await getSavedRecipe(userId);
-      const isRecipeSaved = savedRecipe.user.saveRecipe.includes(recipeId);
-      return isRecipeSaved;
+      console.log("isRecipeSaved");
+      console.log(savedRecipe);
+      if (savedRecipe) {
+        const isRecipeSaved = savedRecipe.user.saveRecipe.includes(recipeId);
+        return isRecipeSaved;
+      }
+      else{
+        const isRecipeSaved = false;
+        return isRecipeSaved;
+      }
+      
     } catch (error) {
       console.error('Error fetching savedRecipe:', error);
     }
@@ -258,7 +273,7 @@ const updateSavedRecipe = async (newRecipe, userId) => {
       )}
 
 
-      {user && (
+      {(
         <div className="mb-4">
           <h4>Comments</h4>
           <textarea
