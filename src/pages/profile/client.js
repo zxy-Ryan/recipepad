@@ -65,3 +65,9 @@ export const findComments = async (userId) => {
   console.log(response);
   return response.data;
 };
+
+export const followUserById = async (userId) => {
+  const response = await request.post(`${BASE_URL}/follow/${userId}`);
+  console.log(response);
+  return response.data;
+};

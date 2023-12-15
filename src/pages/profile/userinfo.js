@@ -9,7 +9,11 @@ import { useDispatch } from "react-redux";
 
 function UserInfoTab({ user, type }) {
   const [userInfo, setUserInfo] = useState(user);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [hasFollowed, setHasFollowed] = useState(false);
+  const [isFollowStatusChecked, setIsFollowStatusChecked] = useState(false);
   const isAccount = type === "account" ? true : false;
+  console.log(user);
   //   const { name, password, email, phoneNumber, introduction } = user;
 
   const save = async () => {
@@ -29,6 +33,43 @@ function UserInfoTab({ user, type }) {
       [name]: value,
     }));
   };
+
+  const followUser = async () => {
+    try {
+      await client.followUserById(userInfo._id);
+      setHasFollowed(true);
+    } catch (error) {
+      console.error("Follow failed:", error);
+    }
+  };
+
+  useEffect(() => {
+    const checkFollowStatus = async () => {
+      try {
+        const account = await client.account();
+        if (account) {
+          setIsLoggedIn(true);
+          const followers = await client.findFollowers(user._id);
+          const isFollowing = followers.some(follower => follower.followerId._id === account._id);
+          setHasFollowed(isFollowing);
+        } else {
+          setIsLoggedIn(false);
+        }
+      } catch (error) {
+        console.error("Error checking follow status:", error);
+      } finally {
+        setIsFollowStatusChecked(true); 
+      }
+    };
+
+    if (type === "guest") {
+      checkFollowStatus();
+    }
+  }, [type, user]);
+
+  if (!isFollowStatusChecked) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div
@@ -120,6 +161,18 @@ function UserInfoTab({ user, type }) {
               />
             </Form.Group>
           </>
+        )}
+
+        {!isAccount && isLoggedIn && !hasFollowed && (
+          <Button variant="primary" onClick={followUser} className="mt-3">
+            Follow
+          </Button>
+        )}
+
+        {!isAccount && isLoggedIn && hasFollowed && (
+          <Button variant="secondary" disabled className="mt-3">
+            Followed
+          </Button>
         )}
       </Form>
     </div>
