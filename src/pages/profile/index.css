@@ -1,0 +1,18 @@
+@media (max-width: 767px) {
+    .responsive-tabs  {
+      font-size: 14px; 
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .responsive-tabs  {
+      font-size: 16px; 
+    }
+  }
+
+  
+  @media (max-width: 575.98px) {
+    .responsive-tabs{
+      flex-direction: column;
+    }
+  }
