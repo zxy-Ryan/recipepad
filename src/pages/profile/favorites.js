@@ -27,7 +27,7 @@ function Favorites({ userObject }) {
   }, []);
 
   if (!favorites || favorites.length === 0) {
-    return <div>No followers found.</div>;
+    return <div>No favorites found.</div>;
   }
 
   return (

@@ -88,6 +88,23 @@ const Header = () => {
               </>
             )}
 
+            {user?.result?._id && user?.result?.role === "admin" && (
+              <>
+                {/*Add Recipe*/}
+                {/* <MDBNavbarItem>
+                  <MDBNavbarLink href="/addRecipe">
+                    <p className="header-text">Add Recipe</p>
+                  </MDBNavbarLink>
+                </MDBNavbarItem> */}
+                {/*Profile*/}
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/userlist">
+                    <p className="header-text">Users Management</p>
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+              </>
+            )}
+
             {user?.result?._id ? (
               <>
                 {/*Logout*/}
