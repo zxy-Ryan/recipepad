@@ -31,7 +31,7 @@ const RecipeDetails = ({ match }) => {
 
   const userId = user?.result?._id
   const userName = user?.result?.name
-  
+  const role = user?.result?.role
 
 
   const getCommentsForRecipe = async (recipeId) => {
@@ -76,7 +76,7 @@ const formatDate = (dateString) => {
 
 const updateSavedRecipe = async (newRecipe, userId) => {
   try {
-    const response = await axios.post(`${URL}/update/${userId}`, newRecipe);
+    const response = await axios.put(`${LOCAL_URL}/update/${userId}`, newRecipe);
     return response
   } catch (error) {
     console.error('Failed to update savedRecipe:', error);
@@ -93,14 +93,16 @@ const updateSavedRecipe = async (newRecipe, userId) => {
         const data = await response.json();
         setRecipe(data.meals[0]);
 
-        const recipeSaved = isRecipeSaved();
+        const recipeSaved = await isRecipeSaved();
         // const userId = user.id
         // const savedRecipe = await getSavedRecipe(userId);
         // const isRecipeSaved = savedRecipe.includes(recipeId);
         // console.log(savedRecipe)
         // console.log(isRecipeSaved); 
-
+        console.log("9876");
+        console.log(recipeSaved);
         setIsSaved(recipeSaved); 
+        console.log(isSaved);
         // 获取评论信息
         console.log(recipeId)
         const commentsData = await getCommentsForRecipe(recipeId);
@@ -128,7 +130,7 @@ const updateSavedRecipe = async (newRecipe, userId) => {
     };
 
     fetchRecipeAndComments();
-  },  [recipeId]);
+  },  [recipeId,userId]);
 
   
 
@@ -140,6 +142,7 @@ const updateSavedRecipe = async (newRecipe, userId) => {
     const commentData = {
         // commentId: commentId,
         userId: userId,
+        userName: userName,
         recipeId: recipeId, 
         commentContent: commentContent,
         time: new Date().toISOString(), 
@@ -183,11 +186,13 @@ const updateSavedRecipe = async (newRecipe, userId) => {
       // const userId = user.id;
       
       // console.log(userId)
+      console.log("123")
+      console.log(userId);
       const savedRecipe = await getSavedRecipe(userId);
       console.log("isRecipeSaved");
       console.log(savedRecipe);
       const isRecipeSaved = savedRecipe.user.saveRecipe.includes(recipeId);
-      
+      console.log("123456")
       console.log(isRecipeSaved); 
       return isRecipeSaved;
     } catch (error) {
@@ -240,6 +245,34 @@ const updateSavedRecipe = async (newRecipe, userId) => {
   // console.log("t1")
   // console.log(Object.values(comments))
 
+  const usersSaveRecipe = ['123', '456']
+
+
+  // const getFollowerIds = async (recipeId) =>{
+
+  // }
+ 
+  // const fetchLikedUsers = async () => {
+  //   try {
+  //     const response = await axios.get(`${LOCAL_URL}/likes/${recipeId}`);
+  //     const likedUserIds = response.data;
+
+  //     console.log(likedUserIds);
+  //   } catch (error) {
+  //     console.error('Error fetching liked users:', error);
+  //   }
+  // };
+  
+  // fetchLikedUsers();
+  
+  
+
+  // const checkUsersSaveRecipe = async () =>{
+  //   // const followerIds = [];
+  //   const followerIds = await getFollowerIds(userId);
+
+  // }
+
   return (
     <div >
     <div className="container mt-4" style={{ textAlign: 'left' }}>
@@ -266,14 +299,30 @@ const updateSavedRecipe = async (newRecipe, userId) => {
       ) : (
         <p>Loading recipe...</p>
       )}
-       {/* 保存或取消保存按钮 */}
-       {user && (
+       {(role === 'admin' || role==='vip') && (
         <div className="mb-4">
           <button className="btn btn-primary" onClick={handleSave} style={{ backgroundColor:'black'}}>
             {isSaved ? 'Unsave' : 'Save'}
           </button>
         </div>
       )}
+
+<div className="mb-4">
+        <ul style={{listStyle:'none'}}>
+         { (role === 'admin' || role==='vip') && usersSaveRecipe.map((userSaveRecipe, index) => (
+      <li key={index} id={`userSaveRecipe-${userSaveRecipe._id}`}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <Link to={`/Profile/${userSaveRecipe.userId}`}>
+              {/* <span style={{ marginRight: '10px' }}>{comment.userId}</span> */}
+              <span style={{ marginRight: '10px' }}>{userSaveRecipe}</span>
+            </Link>
+          </div>
+        </div>
+      </li>
+    ))}
+        </ul>
+      </div>
 
       {user && (
         <div className="mb-4">
@@ -320,7 +369,7 @@ const updateSavedRecipe = async (newRecipe, userId) => {
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Link to={`/Profile/${comment.userId}`}>
               {/* <span style={{ marginRight: '10px' }}>{comment.userId}</span> */}
-              <span style={{ marginRight: '10px' }}>{userName}</span>
+              <span style={{ marginRight: '10px' }}>{comment.userName}</span>
             </Link>
             <span>{formatDate(comment.time)}</span>
           </div>

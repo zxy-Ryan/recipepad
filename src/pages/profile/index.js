@@ -24,17 +24,27 @@ const Profile = () => {
   const [user, setUser] = useState(null);
   const [type, setType] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   const findUserById = async (userId) => {
     try {
       setIsLoading(true);
+  
+      const fetchedAccount = await fetchAccount();
+  
       const user = await client.findUserById(userId);
       setUser(user);
-      setType("guest");
+      if (fetchedAccount && fetchedAccount._id === userId) {
+        setType("account");
+        console.log(type);
+      } else {
+        setType("guest");
+      }
     } catch (error) {
       console.error(error);
     } finally {
       setIsLoading(false); 
+      setIsDataLoaded(true);
     }
   };
 
@@ -45,8 +55,10 @@ const Profile = () => {
       console.log(account);
       setAccount(account);
       setType("account");
+      return account;
     } catch (error) {
       console.error(error);
+      return null;
     } finally {
       setIsLoading(false); 
     }
@@ -56,12 +68,16 @@ const Profile = () => {
     if (userId) {
       findUserById(userId);
     } else {
-      fetchAccount();
+      fetchAccount().then(() => setIsDataLoaded(true));
     }
   }, [userId]);
 
   if (isLoading) {
     return <div>Loading...</div>; 
+  }
+
+  if (!isDataLoaded) {
+    return <div>Loading user information...</div>; // 在数据加载完毕之前显示
   }
 
   if (!account && !user) {
@@ -96,7 +112,7 @@ const Profile = () => {
           <UserListTab />
         </Tab>
         <Tab eventKey="userInfo" title="User Information">
-          <UserInfoTab user={account || user} type={type} />
+          <UserInfoTab user={user || account} type={type} />
         </Tab>
         <Tab eventKey="followings" title="Followings">
           <FollowingsTab userObject={account || user} />
