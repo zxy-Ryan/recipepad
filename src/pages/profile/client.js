@@ -63,12 +63,15 @@ export const findMealById = async (idMeal) => {
 
 export const findComments = async (userId) => {
   const response = await request.get(`${BASE_URL}/api/comments/user/${userId}`);
-  console.log(response);
   return response.data;
 };
 
 export const followUserById = async (userId) => {
   const response = await request.post(`${BASE_URL}/follow/${userId}`);
-  console.log(response);
+  return response.data;
+};
+
+export const UnFollowUserById = async (userId) => {
+  const response = await request.delete(`${BASE_URL}/follow/${userId}`);
   return response.data;
 };

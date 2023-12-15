@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import * as client from "./client";
 
 function Followers({ userObject }) {
-  const [followers, setFollowers] = useState(null);
+  const [followers, setFollowers] = useState([]);
   const userId = userObject._id;
 
   const fetchFollowers = async (userId) => {

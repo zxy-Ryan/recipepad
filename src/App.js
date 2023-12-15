@@ -15,6 +15,7 @@ import Search from "./pages/search";
 import RecipeDetails from "./components/Details";
 import Profile from "./pages/profile";
 import AddEditRecipe from "./pages/AddEditRecipe";
+import UserListTab from "./pages/userlist";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
           <Route path="/Details/:recipeId/*" element={<RecipeDetails />} />
           <Route path="/profile/*" element={<Profile />} />
           <Route path="/profile/:userId/*" element={<Profile />} />
+          <Route path="/userlist" element={<UserListTab />} />
         </Routes>
         <Footer />
       </div>
