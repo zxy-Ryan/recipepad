@@ -299,7 +299,7 @@ const updateSavedRecipe = async (newRecipe, userId) => {
           <div class="row d-flex">
             <div class="col-md-12 col-lg-10">
               <div class="card text-dark">
-                {user &&
+                {
                   comments.map((comment, index) => (
                     <>
                       <div class="card-body p-4">
