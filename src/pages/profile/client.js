@@ -8,7 +8,8 @@ const request = axios.create({
 // export const USERS_API = `${BASE_API}/users`;
 const REMOTE_URL = "https://recipepad-server.onrender.com";
 const LOCAL_URL = "http://localhost:5000";
-const BASE_URL = REMOTE_URL||LOCAL_URL;
+// const BASE_URL = REMOTE_URL||LOCAL_URL;
+const BASE_URL = LOCAL_URL;
 export const USERS_API = `${BASE_URL}/users`;
 
 export const deleteUser = async (user) => {
@@ -62,6 +63,12 @@ export const findMealById = async (idMeal) => {
 
 export const findComments = async (userId) => {
   const response = await request.get(`${BASE_URL}/api/comments/user/${userId}`);
+  console.log(response);
+  return response.data;
+};
+
+export const followUserById = async (userId) => {
+  const response = await request.post(`${BASE_URL}/follow/${userId}`);
   console.log(response);
   return response.data;
 };
