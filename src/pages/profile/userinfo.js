@@ -13,7 +13,6 @@ function UserInfoTab({ user, type }) {
   const [hasFollowed, setHasFollowed] = useState(false);
   const [isFollowStatusChecked, setIsFollowStatusChecked] = useState(false);
   const isAccount = type === "account" ? true : false;
-  console.log(user);
   //   const { name, password, email, phoneNumber, introduction } = user;
 
   const save = async () => {
@@ -43,6 +42,15 @@ function UserInfoTab({ user, type }) {
     }
   };
 
+  const unFollowUser = async () => {
+    try {
+      await client.UnFollowUserById(userInfo._id);
+      setHasFollowed(false);
+    } catch (error) {
+      console.error("Follow failed:", error);
+    }
+  };
+
   useEffect(() => {
     const checkFollowStatus = async () => {
       try {
@@ -50,7 +58,9 @@ function UserInfoTab({ user, type }) {
         if (account) {
           setIsLoggedIn(true);
           const followers = await client.findFollowers(user._id);
-          const isFollowing = followers.some(follower => follower.followerId._id === account._id);
+          const isFollowing = followers.some(
+            (follower) => follower.followerId._id === account._id
+          );
           setHasFollowed(isFollowing);
         } else {
           setIsLoggedIn(false);
@@ -58,13 +68,14 @@ function UserInfoTab({ user, type }) {
       } catch (error) {
         console.error("Error checking follow status:", error);
       } finally {
-        setIsFollowStatusChecked(true); 
+        setIsFollowStatusChecked(true);
       }
     };
 
-    if (type === "guest") {
-      checkFollowStatus();
-    }
+    // if (type === "guest") {
+    //   checkFollowStatus();
+    // }
+    checkFollowStatus();
   }, [type, user]);
 
   if (!isFollowStatusChecked) {
@@ -170,9 +181,12 @@ function UserInfoTab({ user, type }) {
         )}
 
         {!isAccount && isLoggedIn && hasFollowed && (
-          <Button variant="secondary" disabled className="mt-3">
-            Followed
-          </Button>
+          <>
+            <p className="text-left mb-3 mt-3">Followed</p>
+            <Button variant="secondary" onClick={unFollowUser} className="mt-3">
+              Unfollow
+            </Button>
+          </>
         )}
       </Form>
     </div>

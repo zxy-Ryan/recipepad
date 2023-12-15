@@ -1,7 +1,7 @@
 import React from "react";
 import { Tab, Tabs, Container } from "react-bootstrap";
 import * as client from "./client";
-import UserListTab from "./userlist";
+// import UserListTab from "./userlist";
 import UserInfoTab from "./userinfo";
 import CommentsTab from "./comments";
 import FavoritesTab from "./favorites";
@@ -74,7 +74,7 @@ const Profile = () => {
   }
 
   if (!isDataLoaded) {
-    return <div>Loading user information...</div>; // 在数据加载完毕之前显示
+    return <div>Loading user information...</div>; 
   }
 
   if (!account && !user) {
@@ -105,9 +105,9 @@ const Profile = () => {
     >
       <h1 class="text-secondary mb-4">Profile</h1>
       <Tabs defaultActiveKey="userInfo" id="profile-tabs" className="responsive-tabs">
-        <Tab eventKey="userList" title="User List">
+        {/* <Tab eventKey="userList" title="User List">
           <UserListTab />
-        </Tab>
+        </Tab> */}
         <Tab eventKey="userInfo" title="User Information">
           <UserInfoTab user={user || account} type={type} />
         </Tab>
