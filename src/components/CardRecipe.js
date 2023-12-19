@@ -25,7 +25,7 @@ const CardRecipe = ({ imageFile, _id, title }) => {
           position="top"
           style={{ maxWidth: "100%", height: "180px" }}
         />
-        <MDBCardBody>
+        <MDBCardBody style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <MDBCardTitle className="text-start">{title}</MDBCardTitle>
           <MDBCardText className="text-start">
           </MDBCardText>
