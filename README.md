@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# RecipePad
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+RecipePad is a MERN stack web application dedicated to helping culinary enthusiasts manage their recipes effortlessly. Using modern web technologies, this platform enables users to store, search, and manage their recipes with ease, enhancing their cooking experience. This is the React front-end repository of the project. 
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Recipe Management**: Create, update, and delete recipes with user-friendly forms.
+- **Search Functionality**: Leverage advanced search capabilities to find recipes quickly.
+- **Categorization**: Organize recipes into categories for streamlined access.
+- **Social Interaction**: Like, save, comment on recipes, and follow other users.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technology Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React**: A JavaScript library for building user interfaces, ensuring a responsive and dynamic experience.
+- **Redux**: Used for state management within the React app, Redux helps in managing the application's state globally and updates the UI efficiently.
+- **Bootstrap**: A comprehensive front-end framework used for creating modern, responsive layouts. Bootstrap provides a variety of ready-to-use components that enhance the UI design and user experience.
 
-### `npm test`
+## Code Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `src/components`: Contains reusable UI components.
+- `src/pages`: React components that correspond to application pages.
+- `src/redux`: Houses Redux actions, reducers, and store configuration.
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Before you begin, ensure you have the latest version of Node.js and npm installed. This will help manage the project's dependencies and run the application locally.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
+1. **Clone the repository**: First, clone the RecipePad repository to your local machine using Git:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`git clone https://github.com/zxy-Ryan/recipepad.git`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Navigate to the project directory:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`cd recipepad`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Install dependencies: Run the following command to install the necessary dependencies:
 
-## Learn More
+`npm install`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Running the Application
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To start the development server and work on the application in development mode:
 
-### Code Splitting
+`npm start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This will automatically open http://localhost:3000 in your web browser. The server will reload if you make edits to the code, and you will also see any lint errors in the console.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Backend Repository
+See the backend repository at https://github.com/zxy-Ryan/recipepad-server
