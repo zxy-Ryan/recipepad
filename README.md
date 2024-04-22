@@ -4,7 +4,7 @@
 
 RecipePad is a MERN stack web application dedicated to helping culinary enthusiasts manage their recipes effortlessly. Using modern web technologies, this platform enables users to store, search, and manage their recipes with ease, enhancing their cooking experience. This is the React front-end repository of the project. 
 
-### Demo
+## Demo
 
 https://main--comforting-kulfi-00884b.netlify.app/
 
