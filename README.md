@@ -10,7 +10,7 @@ https://main--comforting-kulfi-00884b.netlify.app/
 
 ## Features
 
-- **Recipe Management**: Create, update, and delete recipes with user-friendly forms.
+- **Recipe Management**: Create, edit, and delete recipes with user-friendly forms.
 - **Search Functionality**: Leverage advanced search capabilities to find recipes quickly.
 - **Categorization**: Organize recipes into categories for streamlined access.
 - **Social Interaction**: Like, save, comment on recipes, and follow other users.
